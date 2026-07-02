@@ -1,6 +1,7 @@
 import Header from './components/Header.jsx';
 import ServicesGrid from './components/ServicesGrid.jsx';
 import ContactForm from './components/ContactForm.jsx';
+import logoImage from './assets/logo.png';
 
 const services = [
   {
@@ -28,7 +29,7 @@ const services = [
 function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
-      <Header />
+      <Header logoPreview={logoImage} />
       <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <section className="space-y-6 pb-10 text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-czar-600">
@@ -40,6 +41,30 @@ function App() {
           <p className="mx-auto max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
             Trusted labour law and compliance advisory for growing companies across India. We help businesses stay aligned with statutory requirements and reduce risk with practical support.
           </p>
+        </section>
+
+        <section id="logo" className="mb-10 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm shadow-slate-100 sm:p-8">
+          <div className="flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-czar-600">
+                Brand Logo
+              </p>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+                Your logo now appears on the live website
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base">
+                Place your logo file in the assets folder as logo.png and it will show in the header and on this section.
+              </p>
+            </div>
+
+            <div className="flex min-h-[180px] w-full max-w-[280px] items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <img
+                src={logoImage}
+                alt="Website logo"
+                className="max-h-32 w-full object-contain"
+              />
+            </div>
+          </div>
         </section>
 
         <ServicesGrid services={services} />

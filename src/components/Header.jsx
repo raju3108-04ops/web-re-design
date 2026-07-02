@@ -1,11 +1,19 @@
-function Header() {
+function Header({ logoPreview }) {
   return (
     <header className="border-b border-slate-200 bg-white/95 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 lg:px-8">
         <a href="#home" className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-czar-600 text-white shadow-sm shadow-czar-200/60">
-            <span className="text-xl font-bold">C</span>
-          </div>
+          {logoPreview ? (
+            <img
+              src={logoPreview}
+              alt="Company logo"
+              className="flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200 bg-white object-contain p-1 shadow-sm"
+            />
+          ) : (
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-czar-600 text-white shadow-sm shadow-czar-200/60">
+              <span className="text-xl font-bold">C</span>
+            </div>
+          )}
           <div>
             <p className="text-sm font-semibold text-slate-900">Czar Consultancy</p>
             <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Labour Law & Compliance</p>

@@ -182,22 +182,26 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
 .hero-bg-img.active { opacity: 0.7; transform: scale(1.05); z-index: 1; }
 .hero-img-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(17,24,39,0.95) 0%, rgba(17,24,39,0.6) 50%, transparent 100%); z-index: 2; }
 
-.hero-content { position: relative; z-index: 3; max-width: 850px; color: #fff; }
+.hero-content { position: relative; z-index: 3; max-width: 750px; color: #fff; }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #ff6b6b; margin-bottom: 24px; }
 .hero-eyebrow::before { content: ''; width: 30px; height: 2px; background: #ff6b6b; }
-.hero h1 { font-family: var(--ff-serif); font-size: clamp(48px, 6.5vw, 82px); font-weight: 600; line-height: 1.05; color: #fff; letter-spacing: -0.02em; margin-bottom: 16px; }
+.hero h1 { font-family: var(--ff-serif); font-size: clamp(38px, 6vw, 72px); font-weight: 600; line-height: 1.05; color: #fff; letter-spacing: -0.02em; margin-bottom: 16px; }
 .hero h1 em { font-style: italic; color: #fff; font-weight: 400; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-.hero-sub { font-family: var(--ff-serif); font-size: clamp(20px, 2.5vw, 28px); font-weight: 400; color: rgba(255,255,255,0.9); margin-bottom: 24px; font-style: italic; }
+.hero-sub { font-family: var(--ff-serif); font-size: clamp(18px, 2.5vw, 26px); font-weight: 400; color: rgba(255,255,255,0.9); margin-bottom: 24px; font-style: italic; }
 .hero-desc { font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 48px; max-width: 650px; }
 .hero-desc strong { color: #fff; font-weight: 600; }
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
 
-.hero-proof { display: flex; align-items: center; gap: 24px; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.15); }
+.hero-keypoints { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 32px; }
+.hero-keypoints div { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.14); border-radius: 16px; padding: 18px 20px; color: #fff; font-size: 14px; line-height: 1.7; }
+.hero-keypoints strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+
+.hero-proof { display: flex; align-items: center; gap: 24px; margin-top: 48px; padding-top: 38px; border-top: 1px solid rgba(255,255,255,0.15); }
 .proof-faces { display: flex; }
 .proof-faces img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 3px solid var(--ink); margin-left: -16px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s ease; }
 .proof-faces img:hover { transform: scale(1.1) translateY(-5px); z-index: 10; }
 .proof-faces img:first-child { margin-left: 0; }
-.proof-text { font-size: 13.5px; color: rgba(255,255,255,0.6); line-height: 1.4; }
+.proof-text { font-size: 13.5px; color: rgba(255,255,255,0.72); line-height: 1.5; }
 .proof-text strong { color: #fff; display: block; font-size: 16px; font-family: var(--ff-serif); letter-spacing: 0.02em; margin-bottom: 2px; }
 
 /* Metrics */
@@ -540,7 +544,7 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
 .fl-call { background: var(--red); color: #fff; }
 
 /* ─── MOBILE NAV ─── */
-.mob-nav { display: none; position: fixed; top: 65px; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); z-index: 890; overflow-y: auto; padding: 32px; flex-direction: column; border-top: 1px solid var(--line); }
+.mob-nav { display: none; position: fixed; top: 65px; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); z-index: 890; overflow-y: auto; padding: 28px; flex-direction: column; border-top: 1px solid var(--line); }
 .mob-nav.open { display: flex; animation: fadeUp 0.3s ease; }
 .mob-nav a { display: block; padding: 16px 0; font-size: 16px; font-weight: 500; color: var(--ink); border-bottom: 1px solid var(--line); transition: color 0.3s ease; }
 .mob-nav a:hover { color: var(--red); padding-left: 8px; }
@@ -551,48 +555,67 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
   .wrap { padding: 0 32px; }
   .header-contact-info { display: none; }
   .nav-cta.desktop-only { display: none; }
-  .hero { padding-top: 130px; min-height: auto; padding-bottom: 80px; }
+  .hero { padding-top: 120px; min-height: auto; padding-bottom: 80px; }
+  .hero-content { max-width: 720px; }
+  .hero h1 { font-size: clamp(40px, 6vw, 64px); }
+  .hero-sub { font-size: clamp(18px, 2.5vw, 24px); }
+  .hero-desc { max-width: 100%; }
+  .hero-keypoints { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-actions { gap: 14px; }
+  .hero-proof { gap: 22px; }
+  .nav-links > li > a { padding: 12px 14px; font-size: 14px; }
   .about-grid, .cta-grid, .global-grid, .people-intro, .about-page-grid, .contact-page-grid, .svc-detail-grid { grid-template-columns: 1fr; gap: 48px; }
-  .about-imgs { height: 400px; max-width: 600px; margin: 0 auto; }
+  .about-imgs { height: 420px; max-width: 100%; margin: 0 auto; }
   .svc-grid, .impact-grid, .insight-grid { grid-template-columns: repeat(2, 1fr); }
   .people-grid { grid-template-columns: repeat(2, 1fr); }
   .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+  .global-grid { grid-template-columns: 1fr; gap: 48px; }
+  .clients-carousel-wrap { padding: 24px 0; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
   .ind-grid { grid-template-columns: repeat(2, 1fr); }
   .related-grid { grid-template-columns: repeat(2, 1fr); }
   .svc-sidebar { position: static; }
 }
 @media(max-width: 720px) {
-  .wrap { padding: 0 20px; }
-  .header-top { padding: 8px 0; border-bottom: none; }
+  .wrap { padding: 0 18px; }
+  .header-top { padding: 12px 0; border-bottom: none; }
   .nav-logo { gap: 12px; }
-  .logo-img { height: 40px; }
-  .logo-name { font-size: 22px; }
+  .logo-img { height: 38px; }
+  .logo-name { font-size: 20px; }
   .logo-tagline { display: none; }
   .nav { display: none; }
   .hamburger { display: flex; }
+  .mob-nav { top: 60px; padding: 24px; }
   
-  .hero { padding-top: 120px; }
-  .hero h1 { font-size: 42px; }
-  .hero-sub { font-size: 20px; }
+  .hero { padding-top: 110px; padding-bottom: 70px; }
+  .hero h1 { font-size: 32px; }
+  .hero-sub { font-size: 17px; }
+  .hero-desc { font-size: 15px; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-keypoints { grid-template-columns: 1fr; }
+  .hero-keypoints div { padding: 16px 18px; }
   .hero-proof { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .proof-faces img { width: 44px; height: 44px; }
   
   .svc-grid, .people-grid, .pillars-grid, .ind-grid, .related-grid, .values-grid, .impact-grid, .insight-grid { grid-template-columns: 1fr; }
   .f-row { grid-template-columns: 1fr; }
-  .footer-top { grid-template-columns: 1fr; gap: 40px; }
-  
-  .metric { padding: 32px 20px; }
+  .footer-top { grid-template-columns: 1fr; gap: 36px; }
+  .global-grid { grid-template-columns: 1fr; }
+  .clients-carousel-wrap { padding: 20px 0; }
+  .clients-track { gap: 12px; }
+  .metric { padding: 28px 18px; }
   .metric::after { display: none; } 
   .metrics-inner { border-left: none; }
-  
-  .form-card { padding: 32px 24px; }
-  .svc-detail { padding: 64px 0; }
+  .form-card { padding: 28px 20px; }
+  .svc-detail { padding: 56px 0; }
   .job-card { flex-direction: column; align-items: flex-start; gap: 20px; padding: 24px; }
   .job-apply-btn { width: 100%; }
-  
   .page-hero { padding: 80px 0; }
   .nl-form { flex-direction: column; }
-  .nl-btn { padding: 14px; }
+  .nl-btn { padding: 14px; width: 100%; }
+  .nav-links > li > a { padding: 12px 0; }
+  .mob-nav-label { margin: 24px 0 8px; }
   
   /* Mega Menu Reset for mobile */
   .nav-links > li.has-drop > .dropdown { width: 100%; position: static; box-shadow: none; display: flex; flex-direction: column; opacity: 1; visibility: visible; transform: none; padding: 16px 0; border: none; }
@@ -607,7 +630,7 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
   <div class="header-top">
     <div class="wrap nav-wrap">
       <a class="nav-logo" href="#home">
-        <img src="logo.png" alt="Czar Consultancy" class="logo-img"/>
+        <img src="src/assets/logo.png" alt="Czar Consultancy" class="logo-img"/>
         <div class="logo-text">
           <span class="logo-tagline">Labour Law & Compliance Specialist</span>
         </div>
@@ -619,9 +642,9 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
           <span>+91 9319095290</span>
         </a>
         <div class="hc-divider"></div>
-        <a href="mailto:compliance@czarconsultancy-com-910879.hostingersite.com" class="hc-link">
+        <a href="mailto:compliance@czarconsultancy.com" class="hc-link">
           <svg class="hc-svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <span>compliance@czarconsultancy-com-910879.hostingersite.com</span>
+          <span>compliance@czarconsultancy.com</span>
         </a>
       </div>
 
@@ -664,8 +687,8 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
 
   <section class="hero">
     <div class="hero-bg-slider" id="hero-slider">
-      <img class="hero-bg-img" src="hero2.jpg" alt="Czar Background"/>
-      <img class="hero-bg-img" src="hero3.jpg" alt="Czar Background"/>
+      <img class="hero-bg-img" src="src/assets/hero2.jpg" alt="Czar Background"/>
+      <img class="hero-bg-img" src="src/assets/hero3.jpg" alt="Czar Background"/>
     </div>
     
     <div class="hero-img-overlay"></div>
@@ -673,14 +696,21 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
 
     <div class="wrap" style="width:100%">
       <div class="hero-content rv">
-        <div class="hero-eyebrow">India's Premier Compliance Firm</div>
-        <h1>Where <em>Expertise</em><br/>Meets <em>Precision.</em></h1>
-        <p class="hero-sub">Trusted Labour Law, Compliance & HR Advisory</p>
-        <p class="hero-desc">Czar Consultancy delivers <strong>professional compliance services</strong> for industries, factories, commercial establishments, banks, hotels and software companies — covering all Labour Laws, Payroll, PF/ESIC and industrial dispute management.</p>
+        <div class="hero-eyebrow">Trusted by 200+ India Businesses</div>
+        <h1>Compliance, Payroll &amp; HR Advisory<br/><em>Built for Indian Employers.</em></h1>
+        <p class="hero-sub">Reliable labour law support for factories, hotels, banks, commercial units and IT firms.</p>
+        <p class="hero-desc">Czar Consultancy helps you stay audit-ready with expert PF/ESIC management, contract labour compliance, POSH support and industrial dispute resolution.</p>
         
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-red">Request a Consultation <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l8 8-8 8-1.4-1.4L12.2 9H0V7h12.2L6.6 1.4z"/></svg></a>
-          <a href="#services-registration" class="btn btn-outline-white">Explore Services</a>
+          <a href="#contact" class="btn btn-red">Book a Free Audit <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l8 8-8 8-1.4-1.4L12.2 9H0V7h12.2L6.6 1.4z"/></svg></a>
+          <a href="#services" class="btn btn-outline-white">See Core Services</a>
+        </div>
+
+        <div class="hero-keypoints">
+          <div><strong>Audit-ready</strong> compliance systems</div>
+          <div><strong>Trusted</strong> for payroll and PF/ESIC</div>
+          <div><strong>Dedicated</strong> labour law advisers</div>
+          <div><strong>Fast</strong> dispute resolution support</div>
         </div>
         
         <div class="hero-proof">
@@ -890,7 +920,7 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
         <div class="f-group"><label>Message</label><textarea rows="3" id="f1-message" placeholder="Brief description of your requirement..."></textarea></div>
         <button class="f-submit" onclick="handleSubmit(this,'f1-')">Submit Request →</button>
         <p class="f-note">By submitting, you agree to our <a href="#">Privacy Policy</a>. No spam, ever.</p>
-        <div class="form-contact-row"><div class="fc-item"><span>Phone</span><strong><a href="tel:+91 9319095290" class="hover-link">+91 9319095290</a></strong></div><div class="fc-item"><span>Email</span><strong><a href="mailto:compliance@czarconsultancy-com-910879.hostingersite.com" class="hover-link">compliance@czar.com</a></strong></div></div>
+        <div class="form-contact-row"><div class="fc-item"><span>Phone</span><strong><a href="tel:+91 9319095290" class="hover-link">+91 9319095290</a></strong></div><div class="fc-item"><span>Email</span><strong><a href="mailto:compliance@czarconsultancy.com" class="hover-link">compliance@czarconsultancy.com</a></strong></div></div>
       </div>
     </div>
   </section>
@@ -986,7 +1016,7 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
             <h3>Pooja Kaushik</h3>
             <p class="lead-bio">Pooja leads our corporate compliance training division, specializing in the Prevention of Sexual Harassment (POSH) Act. With extensive experience in organizational structuring, she helps enterprises design robust Internal Committees (IC), conduct sensitization workshops, and build secure, compliant workplace environments that foster trust and safety.</p>
             <div class="lead-expertise"><span class="lead-exp-tag">POSH Audits</span><span class="lead-exp-tag">Corporate Training</span><span class="lead-exp-tag">IC Structuring</span><span class="lead-exp-tag">Policy Drafting</span></div>
-            <a href="mailto:compliance@czarconsultancy-com-910879.hostingersite.com" class="lead-contact hover-link"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Contact Pooja</a>
+            <a href="mailto:compliance@czarconsultancy.com" class="lead-contact hover-link"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Contact Pooja</a>
           </div>
         </div>
 
@@ -997,7 +1027,7 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
             <h3>Adv. B.M. Saini</h3>
             <p class="lead-bio">Adv. B.M. Saini brings decades of distinguished courtroom and advisory experience to Czar Consultancy. A highly respected voice in Indian labour relations, he specializes in navigating complex statutory frameworks, representing management in critical industrial disputes, and negotiating with labour unions to ensure operational continuity and legal security.</p>
             <div class="lead-expertise"><span class="lead-exp-tag">Industrial Disputes</span><span class="lead-exp-tag">Tribunal Representation</span><span class="lead-exp-tag">Union Negotiations</span><span class="lead-exp-tag">Management Advisory</span></div>
-            <a href="mailto:compliance@czarconsultancy-com-910879.hostingersite.com" class="lead-contact hover-link"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Contact Adv. Saini</a>
+            <a href="mailto:compliance@czarconsultancy.com" class="lead-contact hover-link"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Contact Adv. Saini</a>
           </div>
         </div>
 
@@ -1008,7 +1038,7 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
             <h3>Adv. Dishant Saini</h3>
             <p class="lead-bio">As the Head of Compliance, Dishant oversees firm-wide statutory operations across our diverse client portfolio. His sharp legal acumen ensures flawless execution of statutory registrations, complex departmental audits, and multi-state compliance scaling. He acts as the critical bridge between regulatory authorities and corporate management.</p>
             <div class="lead-expertise"><span class="lead-exp-tag">Pan-India Compliance</span><span class="lead-exp-tag">Statutory Audits</span><span class="lead-exp-tag">Contract Labour Law</span><span class="lead-exp-tag">Factories Act</span></div>
-            <a href="mailto:compliance@czarconsultancy-com-910879.hostingersite.com" class="lead-contact hover-link"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Contact Dishant</a>
+            <a href="mailto:compliance@czarconsultancy.com" class="lead-contact hover-link"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Contact Dishant</a>
           </div>
         </div>
 
@@ -1019,7 +1049,7 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
             <h3>KP Sharma</h3>
             <p class="lead-bio">KP Sharma is the architect behind our flawless payroll processing operations. With profound expertise in financial compliance, he manages end-to-end payroll administration, ensuring 100% accuracy in salary computations, timely EPF/ESIC remittances, and seamless tax reporting for enterprises scaling from 50 to 5,000+ employees.</p>
             <div class="lead-expertise"><span class="lead-exp-tag">Payroll Computation</span><span class="lead-exp-tag">EPF & ESIC Filings</span><span class="lead-exp-tag">Tax Structuring</span><span class="lead-exp-tag">Full & Final Settlements</span></div>
-            <a href="mailto:compliance@czarconsultancy-com-910879.hostingersite.com" class="lead-contact hover-link"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Contact KP Sharma</a>
+            <a href="mailto:compliance@czarconsultancy.com" class="lead-contact hover-link"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Contact KP Sharma</a>
           </div>
         </div>
       </div>
@@ -1048,7 +1078,7 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
         <h2 class="display">We're Here to <em>Help</em></h2>
         <div class="contact-info-block" style="margin-top:40px">
           <div class="contact-info-item"><div class="ci-icon">📞</div><div class="ci-body"><strong>Phone</strong><a href="tel:+91 9319095290" class="hover-link">+91 9319095290</a></div></div>
-          <div class="contact-info-item"><div class="ci-icon">✉</div><div class="ci-body"><strong>Email</strong><a href="mailto:compliance@czarconsultancy-com-910879.hostingersite.com" class="hover-link">compliance@czarconsultancy-com-910879.hostingersite.com</a></div></div>
+          <div class="contact-info-item"><div class="ci-icon">✉</div><div class="ci-body"><strong>Email</strong><a href="mailto:compliance@czarconsultancy.com" class="hover-link">compliance@czarconsultancy.com</a></div></div>
           <div class="contact-info-item"><div class="ci-icon">⏰</div><div class="ci-body"><strong>Office Hours</strong><span>Monday to Saturday: 9:00 AM – 6:00 PM</span></div></div>
         </div>
         <div class="offices-grid">
@@ -1162,7 +1192,7 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
 <footer class="footer">
   <div class="wrap footer-top">
     <div class="f-brand">
-      <div class="footer-logo-card"><img src="logo.png" alt="Czar Consultancy" class="logo-img" style="height:35px"/></div>
+      <div class="footer-logo-card"><img src="src/assets/logo.png" alt="Czar Consultancy" class="logo-img" style="height:35px"/></div>
       <p class="f-brand-desc">Specialized in professional services for industries, factories, commercial establishments, banks, hotels and software companies — covering all Labour Laws across India.</p>
     </div>
     <div class="f-col"><h4>Services</h4><ul id="footerSvcList1"></ul></div>
@@ -1171,7 +1201,7 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
       <ul class="f-contact-list">
         <li><span class="ic">📍</span><span>302, 3rd Floor, Kamla Place, Jail Road, Near Sohna Chowk, Gurugram – 122001</span></li>
         <li><span class="ic">📞</span><a href="tel:+91 9319095290" class="hover-link" style="color:rgba(255,255,255,0.7); font-weight:400;">+91 9319095290</a></li>
-        <li><span class="ic">✉</span><a href="mailto:compliance@czarconsultancy-com-910879.hostingersite.com" class="hover-link" style="color:rgba(255,255,255,0.7); font-weight:400;">compliance@czarconsultancy-com-910879.hostingersite.com</a></li>
+        <li><span class="ic">✉</span><a href="mailto:compliance@czarconsultancy.com" class="hover-link" style="color:rgba(255,255,255,0.7); font-weight:400;">compliance@czarconsultancy.com</a></li>
       </ul>
     </div>
   </div>
@@ -1199,13 +1229,13 @@ const teamData = {
 };
 
 const clientLogos = [
-  {name: 'Client 1', logo: 'Client 1.png'}, {name: 'Client 2', logo: 'Client 2.png'},
-  {name: 'Client 3', logo: 'Client 3.png'}, {name: 'Client 4', logo: 'Client 4.png'},
-  {name: 'Client 5', logo: 'Client 5.png'}, {name: 'Client 6', logo: 'Client 6.png'},
-  {name: 'Client 7', logo: 'Client 7.png'}, {name: 'Client 8', logo: 'Client 8.png'},
-  {name: 'Client 9', logo: 'Client 9.png'}, {name: 'Client 10', logo: 'Client 10.png'},
-  {name: 'Client 11', logo: 'Client 11.png'}, {name: 'Client 12', logo: 'Client 12.png'},
-  {name: 'Client 13', logo: 'Client 13.png'}, {name: 'Client 14', logo: 'Client 14.png'}, 
+  {name: 'Client 1', logo: 'src/assets/Client 1.png'}, {name: 'Client 2', logo: 'src/assets/Client 2.png'},
+  {name: 'Client 3', logo: 'src/assets/Client 3.png'}, {name: 'Client 4', logo: 'src/assets/Client 4.png'},
+  {name: 'Client 5', logo: 'src/assets/Client 5.png'}, {name: 'Client 6', logo: 'src/assets/Client 6.png'},
+  {name: 'Client 7', logo: 'src/assets/Client 7.png'}, {name: 'Client 8', logo: 'src/assets/Client 8.png'},
+  {name: 'Client 9', logo: 'src/assets/Client 9.png'}, {name: 'Client 10', logo: 'src/assets/Client 11.png'},
+  {name: 'Client 11', logo: 'src/assets/Client 11.png'}, {name: 'Client 12', logo: 'src/assets/Client 12.png'},
+  {name: 'Client 13', logo: 'src/assets/Client 13.png'}, {name: 'Client 14', logo: 'src/assets/Client 14.png'}, 
 ];
 
 function initClientCarousel() {
@@ -1334,7 +1364,7 @@ services.forEach((s) => {
         </div>
         <div class="expert-sidebar-body">
           <p>Have questions about <strong>${s.title}</strong>? Speak directly with the expert leading this practice area.</p>
-          <a href="mailto:compliance@czarconsultancy-com-910879.hostingersite.com" class="sidebar-cta" style="background:var(--ink);">Contact ${expert.name.split(' ')[0]} →</a>
+          <a href="mailto:compliance@czarconsultancy.com" class="sidebar-cta" style="background:var(--ink);">Contact ${expert.name.split(' ')[0]} →</a>
         </div>
       </div>
     `;
@@ -1385,7 +1415,7 @@ services.forEach((s) => {
           ${expertHTML}
           <div class="sidebar-contact-card">
             <p>Firm Email</p>
-            <a href="mailto:compliance@czarconsultancy-com-910879.hostingersite.com" style="font-size: 18px; line-height: 1.4;">compliance@czar.com</a>
+            <a href="mailto:compliance@czarconsultancy.com" style="font-size: 18px; line-height: 1.4;">compliance@czarconsultancy.com</a>
             <a href="https://wa.me/9319095290" target="_blank" class="sidebar-cta" style="background:#25D366; color:#fff; border:none; margin-top:20px;">💬 WhatsApp Us</a>
           </div>
         </aside>
@@ -1460,6 +1490,8 @@ window.addEventListener('scroll', ()=>{
 // ══════════════════════════════════════
 // WEB3FORMS INTEGRATION (LIVE DATA)
 // ══════════════════════════════════════
+// Web3Forms requires client-side submission on the current plan.
+// The server proxy path is not supported without a Pro plan.
 const WEB3FORMS_ACCESS_KEY = '67f3d90b-c48c-4c8f-bef3-fd00b18e92fd';
 
 async function submitNewsletter(btn) {
