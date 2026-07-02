@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 dotenv.config();
@@ -18,6 +19,23 @@ if (!ACCESS_KEY) {
 
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, '..')));
+
+// Clean URL routing - serve .html files without extension
+app.use((req, res, next) => {
+  const filePath = path.resolve(__dirname, '..', req.path.slice(1) + '.html');
+  
+  // Skip if it's an API route or has a file extension
+  if (req.path.startsWith('/api/') || req.path.includes('.')) {
+    return next();
+  }
+  
+  // Try to serve the .html file
+  if (fs.existsSync(filePath)) {
+    res.sendFile(filePath);
+  } else {
+    next();
+  }
+});
 
 app.post('/api/web3forms', async (req, res) => {
   if (!ACCESS_KEY) {
