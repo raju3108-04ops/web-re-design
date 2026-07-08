@@ -36,10 +36,10 @@ function ContactForm() {
     setStatus('sending');
 
     try {
-      const response = await fetch('https://formspree.io/f/yourFormId', {
+      const response = await fetch('/api/web3forms', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: form.name, email: form.email, message: form.message })
+      body: JSON.stringify({ access_key: '67f3d90b-c48c-4c8f-bef3-fd00b18e92fd', name: form.name, email: form.email, message: form.message })
       });
 
       if (response.ok) {
