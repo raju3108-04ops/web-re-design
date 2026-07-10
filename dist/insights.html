@@ -104,7 +104,7 @@ button { cursor: pointer; border: none; background: none; }
 .featured-sec { padding: 64px 0; border-bottom: 1px solid var(--line); }
 .featured-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; min-height: 480px; }
 .featured-img { position: relative; overflow: hidden; background: var(--bg-soft); }
-.featured-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
+.featured-img img { width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; transition: transform 0.8s var(--ease); }
 .featured-grid:hover .featured-img img { transform: scale(1.03); }
 .featured-content { padding: 56px 56px 56px 56px; display: flex; flex-direction: column; justify-content: center; background: var(--bg-soft); }
 .featured-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 20px; }
@@ -126,7 +126,7 @@ button { cursor: pointer; border: none; background: none; }
 .article-row:first-child { padding-top: 0; }
 
 .article-thumb { position: relative; overflow: hidden; border-radius: 4px; aspect-ratio: 16/10; background: var(--bg-soft); }
-.article-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+.article-thumb img { width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; transition: transform 0.6s var(--ease); }
 .article-row:hover .article-thumb img { transform: scale(1.05); }
 
 .article-info { display: flex; flex-direction: column; justify-content: center; }
@@ -145,6 +145,7 @@ button { cursor: pointer; border: none; background: none; }
 .newsletter-inner p { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 40px; line-height: 1.7; }
 .nl-form { display: flex; gap: 12px; }
 .nl-form input { flex: 1; padding: 16px 24px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; font-size: 15px; border-radius: 4px; transition: border-color 0.3s; }
+.nl-form input::-moz-placeholder { color: rgba(255,255,255,0.4); }
 .nl-form input::placeholder { color: rgba(255,255,255,0.4); }
 .nl-form input:focus { outline: none; border-color: var(--red); }
 .nl-form button { background: var(--red); color: #fff; padding: 16px 32px; font-size: 14px; font-weight: 600; border-radius: 4px; transition: background 0.3s; border: none; cursor: pointer; white-space: nowrap; }
