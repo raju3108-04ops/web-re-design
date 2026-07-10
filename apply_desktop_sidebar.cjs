@@ -1,73 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Czar Consultancy | Labour Law, Compliance & HR Advisory</title>
-<meta name="description" content="Czar Consultancy — India's leading labour law, compliance and payroll advisory firm. Trusted by 500+ organizations across industries."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<style>
-/* (content copied from index-old-spa.html) */
+const fs = require('fs');
 
-/* MEGA MENU */
-.nav-has-dropdown { position: static; }
-.mega-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
-  padding: 48px 0;
-  z-index: 999;
-}
-.nav-has-dropdown:hover .mega-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-.mega-menu-inner {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
-.mega-col h4 {
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--gray);
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 12px;
-}
-.mega-col a {
-  display: block;
-  font-size: 14.5px;
-  font-weight: 500;
-  color: var(--ink);
-  padding: 8px 0;
-  transition: color 0.2s;
-  text-decoration: none;
-}
-.mega-col a:after {
-  display: none !important; /* disable the red underline from header links */
-}
-.mega-col a:hover {
-  color: var(--red);
-}
-
-
+const sidebarCSS = `
 /* DESKTOP SMART SIDEBAR */
 .desktop-hamburger {
   display: flex;
@@ -201,15 +134,9 @@
   margin-top: 16px;
   margin-bottom: 8px;
 }
+`;
 
-</style>
-  <link rel="icon" type="image/png" href="/favicon.png" />
-</head>
-<body>
-
-<!-- index.html copied from index-old-spa.html -->
-
-
+const sidebarHTML = `
 <!-- SMART DESKTOP SIDEBAR -->
 <div id="sidebar-overlay" onclick="closeDesktopSidebar()"></div>
 <div id="desktop-sidebar">
@@ -220,22 +147,11 @@
   
   <div id="ds-main" class="ds-menu-view">
     <a href="/" class="ds-link">Home</a>
-    <div class="ds-link" onclick="switchDsView('ds-about')">About Us <span style="color:var(--red);">→</span></div>
+    <a href="/about" class="ds-link">About Us</a>
     <div class="ds-link" onclick="switchDsView('ds-services')">Services <span style="color:var(--red);">→</span></div>
     <div class="ds-link" onclick="switchDsView('ds-insights')">Insights <span style="color:var(--red);">→</span></div>
     <a href="/careers" class="ds-link">Careers</a>
     <a href="/contact" class="ds-link">Contact</a>
-  </div>
-
-  
-  <div id="ds-about" class="ds-menu-view">
-    <div class="ds-back" onclick="switchDsView('ds-main')">◀ Main Menu</div>
-    <h2 class="ds-title">About Us</h2>
-    <a href="/about" class="ds-sub-link">Company Overview</a>
-    <a href="/team" class="ds-sub-link">Leadership & Team</a>
-    <a href="/careers" class="ds-sub-link">Careers</a>
-    <div class="ds-divider"></div>
-    <a href="/client-results.html" class="ds-sub-link" style="color:var(--red);">Client Results</a>
   </div>
 
   <div id="ds-services" class="ds-menu-view">
@@ -279,15 +195,6 @@
 
 <script>
 function openDesktopSidebar() {
-  const btn = document.querySelector('.desktop-hamburger');
-  if(btn) {
-    btn.style.transition = 'none';
-    btn.style.transform = 'rotate(0deg)';
-    void btn.offsetWidth;
-    btn.style.transition = 'transform 0.6s ease-out';
-    btn.style.transform = 'rotate(360deg)';
-  }
-
   const sidebar = document.getElementById('desktop-sidebar');
   const overlay = document.getElementById('sidebar-overlay');
   
@@ -315,5 +222,45 @@ function switchDsView(viewId) {
   document.getElementById(viewId).classList.add('active');
 }
 </script>
-\n</body>
-</html>
+`;
+
+const hamburgerBtn = `<button class="desktop-hamburger" onclick="openDesktopSidebar()" aria-label="Menu"><span></span><span></span><span></span></button>`;
+
+function updateFiles(dir) {
+  const files = fs.readdirSync(dir, { withFileTypes: true });
+  for (const file of files) {
+    const fullPath = dir + '/' + file.name;
+    if (file.isDirectory() && file.name !== 'node_modules' && file.name !== '.git' && file.name !== 'dist') {
+      updateFiles(fullPath);
+    } else if (file.name.endsWith('.html')) {
+      let content = fs.readFileSync(fullPath, 'utf8');
+      let updated = false;
+      
+      // 1. Inject CSS
+      if (!content.includes('/* DESKTOP SMART SIDEBAR */') && content.includes('</style>')) {
+        content = content.replace('</style>', sidebarCSS + '\n</style>');
+        updated = true;
+      }
+      
+      // 2. Inject Hamburger Icon before logo
+      const logoMatch = /<a class="nav-logo"/;
+      if (logoMatch.test(content) && !content.includes('desktop-hamburger')) {
+        content = content.replace('<a class="nav-logo"', hamburgerBtn + '\\n        <a class="nav-logo"');
+        updated = true;
+      }
+      
+      // 3. Inject Sidebar HTML at bottom of body
+      if (!content.includes('id="desktop-sidebar"') && content.includes('</body>')) {
+        content = content.replace('</body>', sidebarHTML + '\\n</body>');
+        updated = true;
+      }
+
+      if (updated) {
+        fs.writeFileSync(fullPath, content);
+        console.log('Updated ' + fullPath);
+      }
+    }
+  }
+}
+
+updateFiles('.');
