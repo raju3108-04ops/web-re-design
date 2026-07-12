@@ -122,6 +122,10 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; backgr
 /* Hamburger */
 .hamburger { display: none; flex-direction: column; gap: 5px; padding: 6px; z-index: 1001; }
 .hamburger span { width: 26px; height: 2px; background: var(--ink); display: block; transition: all 0.3s ease; border-radius: 2px; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 
 /* ─── SHARED COMPONENTS ─── */
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 40px; width: 100%; }
@@ -683,6 +687,7 @@ h2.display em::after { content: ''; position: absolute; bottom: 4px; left: 0; wi
   top: 0;
   left: 0;
   width: 390px;
+  max-width: 85vw;
   height: 100vh;
   background: #fff;
   z-index: 10000;
@@ -1855,8 +1860,7 @@ function initTilt(selector, strength=8){
       card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px)`;
       glow.style.setProperty('--mx', (x*100)+'%'); glow.style.setProperty('--my', (y*100)+'%');
     });
-    card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)'; });
-  });
+    card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
 }
 setTimeout(()=> initTilt('.pillar, .value-card, .g-stat, .office-card, .person-card-text, .lead-profile', 4), 500);
 
@@ -1887,7 +1891,7 @@ setTimeout(()=> initTilt('.pillar, .value-card, .g-stat, .office-card, .person-c
     <a href="/team" class="ds-sub-link">Leadership & Team</a>
     <a href="/careers" class="ds-sub-link">Careers</a>
     <div class="ds-divider"></div>
-    <a href="/client-results.html" class="ds-sub-link" style="color:var(--red);">Client Results</a>
+    <a href="/client-results" class="ds-sub-link" style="color:var(--red);">Client Results</a>
   </div>
 
   <div id="ds-services" class="ds-menu-view">
@@ -1954,12 +1958,18 @@ function openDesktopSidebar() {
   }
   
   sidebar.classList.add('open');
+  const mobBtn = document.querySelector('.hamburger');
+  if(mobBtn) mobBtn.classList.add('open');
+  document.body.style.overflow = 'hidden';
   overlay.classList.add('open');
 }
 
 function closeDesktopSidebar() {
   document.getElementById('desktop-sidebar').classList.remove('open');
   document.getElementById('sidebar-overlay').classList.remove('open');
+  const mobBtn = document.querySelector('.hamburger');
+  if(mobBtn) mobBtn.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 function switchDsView(viewId) {
